@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Production Line Solver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .solution-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .solution-list li {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+
+        .solution-list li::before {
+            content: counter(solution-counter) ". ";
+            counter-increment: solution-counter;
+            font-weight: bold;
+        }
+
+        .solution-list li p {
+            margin: 5px 0;
+        }
+
+        .total-time {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Best Solution:</h1>
+    <ul class="solution-list">
+        {% for step in best_solution.0 %}
+        <li>
+            <p>{{ forloop.counter }}: {{ step }}</p>
+            <p class="total-time">Total Time: {{ sum(operation_durations[op] for op in step) }}</p>
+            <p>dif: 0.00</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
